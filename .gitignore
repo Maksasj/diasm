@@ -1,0 +1,6 @@
+*.obj
+*.map
+
+.idea
+
+diasmr.asm
