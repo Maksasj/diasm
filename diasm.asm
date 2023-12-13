@@ -2,56 +2,71 @@
 .stack 100h
 .386
 
-.data
-    msg db "Hello, Oskar !", 13, 10, '$'
+@INCLUDE("mov.asm")
+@INCLUDE("opcodes.asm")
 
+.data
+    mov_thing db "processing mov", 13, 10, '$'
+    out_thing db "processing out", 13, 10, '$'
+    not_thing db "processing not", 13, 10, '$'
+    rcr_thing db "processing rcr", 13, 10, '$'
+    xlat_thing db "processing xlat", 13, 10, '$'
+
+    unsupported_thing db "processing unsupported", 13, 10, '$'
+    @DECLARE_OPCODES
 .code
 
-# 1 MOV  | 1000 10dw
-    # 1000 1000
-    # 1000 1001
-    # 1000 1010
-    # 1000 1011
-# 2 MOV  | 1100 011w
-    # 1100 0110
-    # 1100 0111
-# 3 MOV  | 1011 w reg
-    # 1011 0reg
-    # 1011 1reg
-# 4 MOV  | 1010 000w
-    # 1010 0000
-    # 1010 0001
-# 5 MOV  | 1010 001w
-    # 1010 0010
-    # 1010 0011
-# 6 MOV  | 1000 11d0
-    # 1000 0010
-    # 1000 0010
+@MACRO(@EXIT_OK, (),
+    ;; exits if 0 exit code
+    mov ah\, 4ch
+    mov al\, 0
+    int 21h
+)
 
-# 1 OUT  | 1110 011w
-# 2 OUT  | 1110 111w
+@MACRO(@PRINT, (@TEXT),
+    ;; calling print interupt
+    mov cx\, 09h
+    mov ah\, 09h
+    mov dx\, @TEXT
+    int 21h
+)
 
-# 1 NOT  | 1111 011w
+@MACRO(@JMP_EQL, (@VAL1, @VAL2, @LABEL),
+    ;; comparing @VAL1 and @VAL2 and if they are equal jumps to @LABEL
+    cmp @VAL1\, @VAL2
+    je @LABEL
+)
 
-# 1 RCR  | 1101 00vw
+process_mov:
+    @PRINT(offset mov_thing)
+    ret
 
-# 1 XLAT | 1101 0111
+process_out:
+    @PRINT(offset out_thing)
+    ret
 
-@MACRO(@MOV, (), )
+process_not:
+    @PRINT(offset not_thing)
+    ret
+
+process_rcr:
+    @PRINT(offset rcr_thing)
+    ret
+
+process_xlat:
+    @PRINT(offset xlat_thing)
+    ret
+
+process_unsupported:
+    @PRINT(offset unsupported_thing)
+    ret
 
 start:
     mov dx, @data
     mov ds, dx
 
-    mov ax, 10101100b
+    mov bx, 10101101b
+    jmp [bx]
 
-    mov cx, 09h
-    mov ah, 09h
-    mov dx, offset msg
-    int 21h
-
-    mov ah, 4ch
-    mov al, 0
-    int 21h
-
+    @EXIT_OK
 end start
