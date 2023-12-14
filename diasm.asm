@@ -14,6 +14,25 @@
     xlat_str db "xlat", 13, 10, '$'
     unsupported_str db "nil", 13, 10, '$'
 
+    al_reg db "al", '$'
+    cl_reg db "cl", '$'
+    dl_reg db "dl", '$'
+    bl_reg db "bl", '$'
+    ah_reg db "ah", '$'
+    ch_reg db "ch", '$'
+    dh_reg db "dh", '$'
+    bh_reg db "bh", '$'
+    ax_reg db "ax", '$'
+    cx_reg db "cx", '$'
+    dx_reg db "dx", '$'
+    bx_reg db "bx", '$'
+    sp_reg db "sp", '$'
+    bp_reg db "bp", '$'
+    si_reg db "si", '$'
+    di_reg db "di", '$'
+
+    w_val db 0
+
     input_filename db "test.com", 0, '$'
     input_filehandle dw 0
     input_buffer db 255 dup(0), '$'
@@ -67,19 +86,71 @@
     continue:
 )
 
+@MACRO(@MASK_VALUE, (@VALUE, @MASK),
+    and @VALUE\, @MASK
+)
+
 process_mov:
     @PRINT_STR(offset mov_str)
 
     jmp inst_loop
 
-process_out:
-    @PRINT_STR(offset out_str)
+process_out_0:
+    out_0_scenario:
+        @PRINT_STR(offset out_str)
+        @MASK_VALUE(al, 00000001b)
+        mov w_val, al
 
+        call retrieve_next_byte
+
+        @PRINT_BYTE(al)
+
+        @PRINT_STR(offset ax_reg)
+
+        jmp out_continue
+    out_1_scenario:
+        @PRINT_STR(offset out_str)
+        @MASK_VALUE(al, 00000001b)
+        mov w_val, al
+
+        call retrieve_next_byte
+
+        jmp out_continue
+
+    out_continue:
     jmp inst_loop
+
+# w reg
+# 0'000 "al"
+# 0'001 "cl"
+# 0'010 "dl"
+# 0'011 "bl"
+# 0'100 "ah"
+# 0'101 "ch"
+# 0'110 "dh"
+# 0'111 "bh"
+# 1'000 "ax"
+# 1'001 "cx"
+# 1'010 "dx"
+# 1'011 "bx"
+# 1'100 "sp"
+# 1'101 "bp"
+# 1'110 "si"
+# 1'111 "di"
 
 process_not:
     @PRINT_STR(offset not_str)
 
+    call retrieve_next_byte # mod 010 r/m [poslinkis]
+
+    @MASK_VALUE(al, 00000001b)
+
+    not_w_0_scenario:
+        jmp not_continue
+    not_w_1_scenario:
+        jmp not_continue
+
+    not_continue:
     jmp inst_loop
 
 process_rcr:
@@ -126,14 +197,6 @@ start:
         add bx, offset OP_00000000
 
         jmp [bx]
-
-    ;; call retrieve_next_byte
-
-    ; mov bx, 11010000b
-    ; shl bx, 1
-    ; add bx, offset OP_00000000
-;
-    ; jmp [bx]
 
     jmp exit
 end start
