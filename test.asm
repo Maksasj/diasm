@@ -4,6 +4,6 @@ model tiny
 org 0100h
 
 start:
-    mov ah, 09h
+    not ax
 
 end start

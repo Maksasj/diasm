@@ -4,6 +4,62 @@
     @MACRO(@DECL_OPCODE, (@NAME, @VALUE),
     @NAME dw @VALUE)
 
+    # MOV
+    # MOV1 1000'10dw
+    #      1000'1000
+    #      1000'1001
+    #      1000'1010
+    #      1000'1011
+    # MOV2 1100'011w
+    #      1100'0110
+    #      1100'0111
+    # MOV3 1011'wreg
+    #      1011'0000
+    #      1011'0001
+    #      1011'0010
+    #      1011'0011
+    #      1011'0100
+    #      1011'0101
+    #      1011'0110
+    #      1011'0111
+    #      1011'1000
+    #      1011'1001
+    #      1011'1010
+    #      1011'1011
+    #      1011'1100
+    #      1011'1101
+    #      1011'1110
+    #      1011'1111
+    # MOV4 1010'000w
+    #      1010'0000
+    #      1010'0001
+    # MOV5 1010'001w
+    #      1010'0010
+    #      1010'0011
+    # MOV6 1000'11d0
+    #      1000'1100
+    #      1000'1110
+    #
+    # OUT
+    # OUT1 1110'011w
+    #      1110'0110
+    #      1110'0111
+    # OUT2 1110'111w
+    #      1110'1110
+    #      1110'1111
+    #
+    # NOT  1111'011w
+    #      1111'0110
+    #      1111'0111
+    #
+    # RCR  1101'00vw
+    #      1101'0000
+    #      1101'0001
+    #      1101'0010
+    #      1101'0011
+    #
+    # XLAT 1101'0111
+
     @MACRO(@DECLARE_OPCODES, (),
     ;; declaring all opcodes @DECL_OPCODE(OP_00000000\, process_unsupported) # 00000000
          @DECL_OPCODE(OP_00000001\, process_unsupported) # 00000001
@@ -141,12 +197,12 @@
          @DECL_OPCODE(OP_10000101\, process_unsupported) # 10000101
          @DECL_OPCODE(OP_10000110\, process_unsupported) # 10000110
          @DECL_OPCODE(OP_10000111\, process_unsupported) # 10000111
-         @DECL_OPCODE(OP_10001000\, process_unsupported) # 10001000
-         @DECL_OPCODE(OP_10001001\, process_unsupported) # 10001001
-         @DECL_OPCODE(OP_10001010\, process_unsupported) # 10001010
-         @DECL_OPCODE(OP_10001011\, process_unsupported) # 10001011
-         @DECL_OPCODE(OP_10001100\, process_unsupported) # 10001100
-         @DECL_OPCODE(OP_10001101\, process_unsupported) # 10001101
+         @DECL_OPCODE(OP_10001000\, process_mov)         # 10001000 Scenario 1
+         @DECL_OPCODE(OP_10001001\, process_mov)         # 10001001 Scenario 1
+         @DECL_OPCODE(OP_10001010\, process_mov)         # 10001010 Scenario 1
+         @DECL_OPCODE(OP_10001011\, process_mov)         # 10001011 Scenario 1
+         @DECL_OPCODE(OP_10001100\, process_mov)         # 10001100 Scenario 6
+         @DECL_OPCODE(OP_10001101\, process_mov)         # 10001101 Scenario 6
          @DECL_OPCODE(OP_10001110\, process_unsupported) # 10001110
          @DECL_OPCODE(OP_10001111\, process_unsupported) # 10001111
          @DECL_OPCODE(OP_10010000\, process_unsupported) # 10010000
@@ -165,10 +221,10 @@
          @DECL_OPCODE(OP_10011101\, process_unsupported) # 10011101
          @DECL_OPCODE(OP_10011110\, process_unsupported) # 10011110
          @DECL_OPCODE(OP_10011111\, process_unsupported) # 10011111
-         @DECL_OPCODE(OP_10100000\, process_unsupported) # 10100000
-         @DECL_OPCODE(OP_10100001\, process_unsupported) # 10100001
-         @DECL_OPCODE(OP_10100010\, process_unsupported) # 10100010
-         @DECL_OPCODE(OP_10100011\, process_unsupported) # 10100011
+         @DECL_OPCODE(OP_10100000\, process_mov)         # 10100000 Scenario 4
+         @DECL_OPCODE(OP_10100001\, process_mov)         # 10100001 Scenario 4
+         @DECL_OPCODE(OP_10100010\, process_mov)         # 10100010 Scenario 5
+         @DECL_OPCODE(OP_10100011\, process_mov)         # 10100011 Scenario 5
          @DECL_OPCODE(OP_10100100\, process_unsupported) # 10100100
          @DECL_OPCODE(OP_10100101\, process_unsupported) # 10100101
          @DECL_OPCODE(OP_10100110\, process_unsupported) # 10100110
@@ -181,30 +237,30 @@
          @DECL_OPCODE(OP_10101101\, process_unsupported) # 10101101
          @DECL_OPCODE(OP_10101110\, process_unsupported) # 10101110
          @DECL_OPCODE(OP_10101111\, process_unsupported) # 10101111
-         @DECL_OPCODE(OP_10110000\, process_unsupported) # 10110000
-         @DECL_OPCODE(OP_10110001\, process_unsupported) # 10110001
-         @DECL_OPCODE(OP_10110010\, process_unsupported) # 10110010
-         @DECL_OPCODE(OP_10110011\, process_unsupported) # 10110011
-         @DECL_OPCODE(OP_10110100\, process_unsupported) # 10110100
-         @DECL_OPCODE(OP_10110101\, process_unsupported) # 10110101
-         @DECL_OPCODE(OP_10110110\, process_unsupported) # 10110110
-         @DECL_OPCODE(OP_10110111\, process_unsupported) # 10110111
-         @DECL_OPCODE(OP_10111000\, process_unsupported) # 10111000
-         @DECL_OPCODE(OP_10111001\, process_unsupported) # 10111001
-         @DECL_OPCODE(OP_10111010\, process_unsupported) # 10111010
-         @DECL_OPCODE(OP_10111011\, process_unsupported) # 10111011
-         @DECL_OPCODE(OP_10111100\, process_unsupported) # 10111100
-         @DECL_OPCODE(OP_10111101\, process_unsupported) # 10111101
-         @DECL_OPCODE(OP_10111110\, process_unsupported) # 10111110
-         @DECL_OPCODE(OP_10111111\, process_unsupported) # 10111111
+         @DECL_OPCODE(OP_10110000\, process_mov)         # 10110000 Scenario 3
+         @DECL_OPCODE(OP_10110001\, process_mov)         # 10110001 Scenario 3
+         @DECL_OPCODE(OP_10110010\, process_mov)         # 10110010 Scenario 3
+         @DECL_OPCODE(OP_10110011\, process_mov)         # 10110011 Scenario 3
+         @DECL_OPCODE(OP_10110100\, process_mov)         # 10110100 Scenario 3
+         @DECL_OPCODE(OP_10110101\, process_mov)         # 10110101 Scenario 3
+         @DECL_OPCODE(OP_10110110\, process_mov)         # 10110110 Scenario 3
+         @DECL_OPCODE(OP_10110111\, process_mov)         # 10110111 Scenario 3
+         @DECL_OPCODE(OP_10111000\, process_mov)         # 10111000 Scenario 3
+         @DECL_OPCODE(OP_10111001\, process_mov)         # 10111001 Scenario 3
+         @DECL_OPCODE(OP_10111010\, process_mov)         # 10111010 Scenario 3
+         @DECL_OPCODE(OP_10111011\, process_mov)         # 10111011 Scenario 3
+         @DECL_OPCODE(OP_10111100\, process_mov)         # 10111100 Scenario 3
+         @DECL_OPCODE(OP_10111101\, process_mov)         # 10111101 Scenario 3
+         @DECL_OPCODE(OP_10111110\, process_mov)         # 10111110 Scenario 3
+         @DECL_OPCODE(OP_10111111\, process_mov)         # 10111111 Scenario 3
          @DECL_OPCODE(OP_11000000\, process_unsupported) # 11000000
          @DECL_OPCODE(OP_11000001\, process_unsupported) # 11000001
          @DECL_OPCODE(OP_11000010\, process_unsupported) # 11000010
          @DECL_OPCODE(OP_11000011\, process_unsupported) # 11000011
          @DECL_OPCODE(OP_11000100\, process_unsupported) # 11000100
          @DECL_OPCODE(OP_11000101\, process_unsupported) # 11000101
-         @DECL_OPCODE(OP_11000110\, process_unsupported) # 11000110
-         @DECL_OPCODE(OP_11000111\, process_unsupported) # 11000111
+         @DECL_OPCODE(OP_11000110\, process_mov)         # 11000110 Scenario 2
+         @DECL_OPCODE(OP_11000111\, process_mov)         # 11000111 Scenario 2
          @DECL_OPCODE(OP_11001000\, process_unsupported) # 11001000
          @DECL_OPCODE(OP_11001001\, process_unsupported) # 11001001
          @DECL_OPCODE(OP_11001010\, process_unsupported) # 11001010
@@ -213,14 +269,14 @@
          @DECL_OPCODE(OP_11001101\, process_unsupported) # 11001101
          @DECL_OPCODE(OP_11001110\, process_unsupported) # 11001110
          @DECL_OPCODE(OP_11001111\, process_unsupported) # 11001111
-         @DECL_OPCODE(OP_11010000\, process_unsupported) # 11010000
-         @DECL_OPCODE(OP_11010001\, process_unsupported) # 11010001
-         @DECL_OPCODE(OP_11010010\, process_unsupported) # 11010010
-         @DECL_OPCODE(OP_11010011\, process_unsupported) # 11010011
+         @DECL_OPCODE(OP_11010000\, process_rcr)         # 11010000
+         @DECL_OPCODE(OP_11010001\, process_rcr)         # 11010001
+         @DECL_OPCODE(OP_11010010\, process_rcr)         # 11010010
+         @DECL_OPCODE(OP_11010011\, process_rcr)         # 11010011
          @DECL_OPCODE(OP_11010100\, process_unsupported) # 11010100
          @DECL_OPCODE(OP_11010101\, process_unsupported) # 11010101
          @DECL_OPCODE(OP_11010110\, process_unsupported) # 11010110
-         @DECL_OPCODE(OP_11010111\, process_unsupported) # 11010111
+         @DECL_OPCODE(OP_11010111\, process_xlat)        # 11010111
          @DECL_OPCODE(OP_11011000\, process_unsupported) # 11011000
          @DECL_OPCODE(OP_11011001\, process_unsupported) # 11011001
          @DECL_OPCODE(OP_11011010\, process_unsupported) # 11011010
@@ -235,24 +291,24 @@
          @DECL_OPCODE(OP_11100011\, process_unsupported) # 11100011
          @DECL_OPCODE(OP_11100100\, process_unsupported) # 11100100
          @DECL_OPCODE(OP_11100101\, process_unsupported) # 11100101
-         @DECL_OPCODE(OP_11100110\, process_unsupported) # 11100110
-         @DECL_OPCODE(OP_11100111\, process_unsupported) # 11100111
+         @DECL_OPCODE(OP_11100110\, process_out)         # 11100110 Scenario 1
+         @DECL_OPCODE(OP_11100111\, process_out)         # 11100111 Scenario 1
          @DECL_OPCODE(OP_11101000\, process_unsupported) # 11101000
          @DECL_OPCODE(OP_11101001\, process_unsupported) # 11101001
          @DECL_OPCODE(OP_11101010\, process_unsupported) # 11101010
          @DECL_OPCODE(OP_11101011\, process_unsupported) # 11101011
          @DECL_OPCODE(OP_11101100\, process_unsupported) # 11101100
          @DECL_OPCODE(OP_11101101\, process_unsupported) # 11101101
-         @DECL_OPCODE(OP_11101110\, process_unsupported) # 11101110
-         @DECL_OPCODE(OP_11101111\, process_unsupported) # 11101111
+         @DECL_OPCODE(OP_11101110\, process_out)         # 11101110 Scenario 2
+         @DECL_OPCODE(OP_11101111\, process_out)         # 11101111 Scenario 2
          @DECL_OPCODE(OP_11110000\, process_unsupported) # 11110000
          @DECL_OPCODE(OP_11110001\, process_unsupported) # 11110001
          @DECL_OPCODE(OP_11110010\, process_unsupported) # 11110010
          @DECL_OPCODE(OP_11110011\, process_unsupported) # 11110011
          @DECL_OPCODE(OP_11110100\, process_unsupported) # 11110100
          @DECL_OPCODE(OP_11110101\, process_unsupported) # 11110101
-         @DECL_OPCODE(OP_11110110\, process_unsupported) # 11110110
-         @DECL_OPCODE(OP_11110111\, process_unsupported) # 11110111
+         @DECL_OPCODE(OP_11110110\, process_not)         # 11110110
+         @DECL_OPCODE(OP_11110111\, process_not)         # 11110111
          @DECL_OPCODE(OP_11111000\, process_unsupported) # 11111000
          @DECL_OPCODE(OP_11111001\, process_unsupported) # 11111001
          @DECL_OPCODE(OP_11111010\, process_unsupported) # 11111010
