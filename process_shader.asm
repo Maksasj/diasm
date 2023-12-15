@@ -34,9 +34,7 @@
 
     @PRINT_STR(bx)
 
-    push bp
-    call retrieve_next_byte
-    pop bp
+    @RETRIEVE_NEXT_BYTE
 
     xor ah\, ah
 

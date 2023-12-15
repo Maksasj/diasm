@@ -82,10 +82,10 @@
 
     xor cx\, cx
 
-    call retrieve_next_byte
+    @RETRIEVE_NEXT_BYTE
     mov ch\, al
     push cx
-    call retrieve_next_byte
+    @RETRIEVE_NEXT_BYTE
     pop cx
     mov ah\, al
     mov al\, ch
@@ -125,7 +125,7 @@ start:
     call read_input_file
 
     inst_loop:
-        call retrieve_next_byte
+        @RETRIEVE_NEXT_BYTE
 
         xor bx, bx
         mov bl, al

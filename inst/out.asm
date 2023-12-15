@@ -10,7 +10,7 @@ process_out:
     @JMP_EQL(al, 00001000b, out_scenario_1)
 
     out_scenario_0:
-        call retrieve_next_byte
+        @RETRIEVE_NEXT_BYTE
         xor ah, ah
 
         @PRINT_WORD(ax)

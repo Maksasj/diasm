@@ -103,6 +103,13 @@ ENDM
     int 21h
 )
 
+@MACRO(@RETRIEVE_NEXT_BYTE, (),
+    ;; retrieve next byte
+    push bp
+    call retrieve_next_byte
+    pop bp
+)
+
 @MACRO(@PRINT_BYTE, (@BYTE),
     @PUSH_ALL
     ;; print byte\\, from @BYTE

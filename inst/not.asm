@@ -4,7 +4,7 @@ process_not:
     mov w_val, al
     @MASK_VALUE(w_val, 00000001b)
 
-    call retrieve_next_byte
+    @RETRIEVE_NEXT_BYTE
 
     mov rm_val, al
     @MASK_VALUE(rm_val, 00000111b)

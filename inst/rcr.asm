@@ -8,7 +8,7 @@ process_rcr:
     @MASK_VALUE(v_val, 00000010b)
 
     ;; there we setup mod and r/m values and jump to correct mod scenario
-    call retrieve_next_byte
+    @RETRIEVE_NEXT_BYTE
 
     mov rm_val, al
     @MASK_VALUE(rm_val, 00000111b)
