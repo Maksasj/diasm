@@ -318,6 +318,7 @@
          @DECL_OPCODE(OP_11111110\, process_unsupported) # 11111110
          @DECL_OPCODE(OP_11111111\, process_unsupported) # 11111111
 
+
     MOD_R_M_STR_00000 db "bx + si$                "
     MOD_R_M_STR_00001 db "bx + di$                "
     MOD_R_M_STR_00010 db "bp + si$                "

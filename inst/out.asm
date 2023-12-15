@@ -1,27 +1,43 @@
 process_out:
     @PRINT_STR(offset out_str)
-    @PRINT_STR(offset endl_str)
 
-    # out_0_scenario:
-    #     @PRINT_STR(offset out_str)
-    #     @MASK_VALUE(al, 00000001b)
-    #     mov w_val, al
-#
-    #     call retrieve_next_byte
-#
-    #     @PRINT_BYTE(al)
-#
-    #     @PRINT_STR(offset ax_reg)
-#
-    #     jmp out_continue
-    # out_1_scenario:
-    #     @PRINT_STR(offset out_str)
-    #     @MASK_VALUE(al, 00000001b)
-    #     mov w_val, al
-#
-    #     call retrieve_next_byte
-#
-    #     jmp out_continue
+    mov cl, al
+    @MASK_VALUE(al, 00000001b)
+    mov w_val, al
+
+    mov al, cl
+    @MASK_VALUE(al, 00001000b)
+
+    @JMP_EQL(al, 00000000b, out_scenario_0)
+    @JMP_EQL(al, 00001000b, out_scenario_1)
+
+    out_scenario_0:
+        call retrieve_next_byte
+        xor ah, ah
+
+        @PRINT_WORD(ax)
+
+        jmp out_continue
+
+    out_scenario_1:
+        @PRINT_STR(offset W_REG_STR_1010)
+        jmp out_continue
 
     out_continue:
+
+    @JMP_EQL(w_val, 00000000b, out_scenario_al)
+    @JMP_EQL(w_val, 00000000b, out_scenario_ax)
+
+    out_scenario_al:
+        @PRINT_STR(offset W_REG_STR_0000)
+        jmp out_finish
+
+    out_scenario_ax:
+        @PRINT_STR(offset W_REG_STR_1000)
+        jmp out_finish
+
+    out_finish:
+
+    @PRINT_STR(offset endl_str)
+
     jmp inst_loop
