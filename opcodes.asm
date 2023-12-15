@@ -291,16 +291,16 @@
          @DECL_OPCODE(OP_11100011\, process_unsupported) # 11100011
          @DECL_OPCODE(OP_11100100\, process_unsupported) # 11100100
          @DECL_OPCODE(OP_11100101\, process_unsupported) # 11100101
-         @DECL_OPCODE(OP_11100110\, out_0_scenario)      # 11100110 Scenario 1
-         @DECL_OPCODE(OP_11100111\, out_0_scenario)      # 11100111 Scenario 1
+         @DECL_OPCODE(OP_11100110\, process_out)         # 11100110 Scenario 1
+         @DECL_OPCODE(OP_11100111\, process_out)         # 11100111 Scenario 1
          @DECL_OPCODE(OP_11101000\, process_unsupported) # 11101000
          @DECL_OPCODE(OP_11101001\, process_unsupported) # 11101001
          @DECL_OPCODE(OP_11101010\, process_unsupported) # 11101010
          @DECL_OPCODE(OP_11101011\, process_unsupported) # 11101011
          @DECL_OPCODE(OP_11101100\, process_unsupported) # 11101100
          @DECL_OPCODE(OP_11101101\, process_unsupported) # 11101101
-         @DECL_OPCODE(OP_11101110\, out_1_scenario)      # 11101110 Scenario 2
-         @DECL_OPCODE(OP_11101111\, out_1_scenario)      # 11101111 Scenario 2
+         @DECL_OPCODE(OP_11101110\, process_out)         # 11101110 Scenario 2
+         @DECL_OPCODE(OP_11101111\, process_out)         # 11101111 Scenario 2
          @DECL_OPCODE(OP_11110000\, process_unsupported) # 11110000
          @DECL_OPCODE(OP_11110001\, process_unsupported) # 11110001
          @DECL_OPCODE(OP_11110010\, process_unsupported) # 11110010
@@ -317,5 +317,47 @@
          @DECL_OPCODE(OP_11111101\, process_unsupported) # 11111101
          @DECL_OPCODE(OP_11111110\, process_unsupported) # 11111110
          @DECL_OPCODE(OP_11111111\, process_unsupported) # 11111111
+
+    MOD_R_M_STR_00000 db "bx + si$                "
+    MOD_R_M_STR_00001 db "bx + di$                "
+    MOD_R_M_STR_00010 db "bp + si$                "
+    MOD_R_M_STR_00011 db "bp + di$                "
+    MOD_R_M_STR_00100 db "si$                     "
+    MOD_R_M_STR_00101 db "di$                     "
+    MOD_R_M_STR_00110 db "tiesioginis adresas$    "
+    MOD_R_M_STR_00111 db "bx$                     "
+    MOD_R_M_STR_01000 db "bx + si + $             "
+    MOD_R_M_STR_01001 db "bx + di + $             "
+    MOD_R_M_STR_01010 db "bp + si + $             "
+    MOD_R_M_STR_01011 db "bp + di + $             "
+    MOD_R_M_STR_01100 db "si + $                  "
+    MOD_R_M_STR_01101 db "di + $                  "
+    MOD_R_M_STR_01110 db "bp + $                  "
+    MOD_R_M_STR_01111 db "bx + $                  "
+    MOD_R_M_STR_10000 db "bx + si + $             "
+    MOD_R_M_STR_10001 db "bx + di + $             "
+    MOD_R_M_STR_10010 db "bp + si + $             "
+    MOD_R_M_STR_10011 db "bp + di + $             "
+    MOD_R_M_STR_10100 db "si + $                  "
+    MOD_R_M_STR_10101 db "di + $                  "
+    MOD_R_M_STR_10110 db "bp + $                  "
+    MOD_R_M_STR_10111 db "bx + $                  "
+
+    W_REG_STR_0000 db "al$"
+    W_REG_STR_0001 db "cl$"
+    W_REG_STR_0010 db "dl$"
+    W_REG_STR_0011 db "bl$"
+    W_REG_STR_0100 db "ah$"
+    W_REG_STR_0101 db "ch$"
+    W_REG_STR_0110 db "dh$"
+    W_REG_STR_0111 db "bh$"
+    W_REG_STR_1000 db "ax$"
+    W_REG_STR_1001 db "cx$"
+    W_REG_STR_1010 db "dx$"
+    W_REG_STR_1011 db "bx$"
+    W_REG_STR_1100 db "sp$"
+    W_REG_STR_1101 db "bp$"
+    W_REG_STR_1110 db "si$"
+    W_REG_STR_1111 db "di$"
     )
 )
