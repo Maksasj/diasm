@@ -1,11 +1,9 @@
 process_out:
     @PRINT_STR(offset out_str)
 
-    mov cl, al
-    @MASK_VALUE(al, 00000001b)
     mov w_val, al
+    @MASK_VALUE(w_val, 00000001b)
 
-    mov al, cl
     @MASK_VALUE(al, 00001000b)
 
     @JMP_EQL(al, 00000000b, out_scenario_0)

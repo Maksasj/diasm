@@ -1,25 +1,21 @@
 process_rcr:
     @PRINT_STR(offset rcr_str)
 
-    mov cl, al
-    @MASK_VALUE(al, 00000001b)
     mov w_val, al
+    @MASK_VALUE(w_val, 00000001b)
 
-    mov al, cl
-    @MASK_VALUE(al, 00000010b)
     mov v_val, al
+    @MASK_VALUE(v_val, 00000010b)
 
     ;; there we setup mod and r/m values and jump to correct mod scenario
     call retrieve_next_byte
 
-    mov cl, al
-    @MASK_VALUE(cl, 00000111b)
-    mov rm_val, cl
+    mov rm_val, al
+    @MASK_VALUE(rm_val, 00000111b)
 
-    mov cl, al
-    @MASK_VALUE(cl, 11000000b)
-    shr cl, 3
-    mov mod_val, cl
+    mov mod_val, al
+    @MASK_VALUE(mod_val, 11000000b)
+    shr mod_val, 3
 
     @JMP_EQL(mod_val, 00000000b, rcr_scenario_mod_00)
     @JMP_EQL(mod_val, 00001000b, rcr_scenario_mod_01)

@@ -10,22 +10,13 @@
     xlat_str db "xlat$"
     unsupported_str db "nil$"
 
-    short_str db "short$"
-    wide_str db "wide$"
-
     endl_str db 13, 10, '$'
-
-    ttt_str db "tttt$"
 
     w_val db 0
     v_val db 0
     mod_val db 0
     rm_val db 0
     reg_val db 0
-
-    byte_str db "byte$"
-    word_str db "word$"
-    ptr_str db "ptr$"
 
     input_filename db "test.com", 0, '$'
     input_filehandle dw 0
@@ -37,7 +28,6 @@
     @DECLARE_OPCODES
 .code
 
-@INCLUDE("mov.asm")
 @INCLUDE("opcodes.asm")
 @INCLUDE("lib.asm")
 
@@ -73,7 +63,7 @@
     inc input_pointer
 
     cmp input_pointer\, 256
-    jne continue
+    jne retrieve_next_byte_continue
 
     @PUSH_ALL
     call read_input_file
@@ -81,7 +71,7 @@
 
     mov input_pointer\, 0
 
-    continue:
+    retrieve_next_byte_continue:
 )
 
 @DECL_PROC(retrieve_word_proc,
@@ -106,6 +96,8 @@
 @MACRO(@MASK_VALUE, (@VALUE, @MASK),
     and @VALUE\, @MASK
 )
+
+@INCLUDE("process_shader.asm")
 
 @INCLUDE("inst\\mov.asm")
 @INCLUDE("inst\\out.asm")
