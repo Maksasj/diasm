@@ -1,8 +1,8 @@
 # DIASM
 
 ## Instructions
-[ ] MOV
-[x] OUT
-[x] NOT
-[x] RCR
-[x] XLAT
+- [ ] MOV
+- [x] OUT
+- [x] NOT
+- [x] RCR
+- [x] XLAT
