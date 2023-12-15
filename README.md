@@ -4,5 +4,5 @@
 [ ] MOV
 [x] OUT
 [x] NOT
-[ ] RCR
+[x] RCR
 [x] XLAT

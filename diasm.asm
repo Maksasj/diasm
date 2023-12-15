@@ -18,6 +18,7 @@
     ttt_str db "tttt$"
 
     w_val db 0
+    v_val db 0
     mod_val db 0
     rm_val db 0
     reg_val db 0
@@ -83,11 +84,10 @@
     continue:
 )
 
-
-@DECL_PROC(retrieve_word,
+@DECL_PROC(retrieve_word_proc,
     ;; retrieve next word (just two bytes)\, also do byte swap
-    ;; note that we there push bp, since we can not push all argument before doing
-    ;; call retrieve_next_byte, (this procedure breaks bp thing)
+    ;; note that we there push bp\, since we can not push all argument before doing
+    ;; call retrieve_next_byte\, (this procedure breaks bp thing)
     push bp
 
     xor cx\, cx

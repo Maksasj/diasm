@@ -106,9 +106,16 @@ ENDM
 @MACRO(@PRINT_BYTE, (@BYTE),
     @PUSH_ALL
     ;; print byte\\, from @BYTE
-    mov dl @BYTE
+    mov dl\\, @BYTE
     call print_byte_proc
     @POP_ALL
+)
+
+@MACRO(@PREPARE_AX_MOD_R_M, (),
+    ;; store mod and rm in format mod rm 5 bytes
+    xor al\\, al
+    mov al\\, mod_val
+    or al\\, rm_val
 )
 
 )
