@@ -83,17 +83,24 @@
     continue:
 )
 
+
 @DECL_PROC(retrieve_word,
     ;; retrieve next word (just two bytes)\, also do byte swap
-    push cx
+    ;; note that we there push bp, since we can not push all argument before doing
+    ;; call retrieve_next_byte, (this procedure breaks bp thing)
+    push bp
+
+    xor cx\, cx
 
     call retrieve_next_byte
     mov ch\, al
+    push cx
     call retrieve_next_byte
+    pop cx
     mov ah\, al
     mov al\, ch
 
-    pop cx
+    pop bp
 )
 
 @MACRO(@MASK_VALUE, (@VALUE, @MASK),
