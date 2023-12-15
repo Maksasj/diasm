@@ -14,9 +14,7 @@
     jmp process_mod_xxx_rm_scenario_00_continue
 
     process_mod_xxx_rm_scenario_00_ties_adr:
-        push bp
-        call retrieve_word_proc
-        pop bp
+        @RETRIEVE_NEXT_WORD
 
         @PRINT_WORD(ax)
 
@@ -52,9 +50,7 @@
 
     @PRINT_STR(bx)
 
-    push bp
-    call retrieve_word_proc
-    pop bp
+    @RETRIEVE_NEXT_WORD
 
     @PRINT_WORD(ax)
 )

@@ -110,6 +110,13 @@ ENDM
     pop bp
 )
 
+@MACRO(@RETRIEVE_NEXT_WORD, (),
+    ;; retrieve next word
+    push bp
+    call retrieve_word_proc
+    pop bp
+)
+
 @MACRO(@PRINT_BYTE, (@BYTE),
     @PUSH_ALL
     ;; print byte\\, from @BYTE
