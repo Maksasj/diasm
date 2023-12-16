@@ -361,5 +361,10 @@
     W_REG_STR_1101 db "bp$"
     W_REG_STR_1110 db "si$"
     W_REG_STR_1111 db "di$"
+
+    SREG_00 db "es$"
+    SREG_01 db "cs$"
+    SREG_10 db "ss$"
+    SREG_11 db "ds$"
     )
 )

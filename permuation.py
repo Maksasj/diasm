@@ -17,6 +17,13 @@ reg = [
     "di"
 ]
 
+sreg = [
+    "es",
+    "cs",
+    "ss",
+    "ds"
+]
+
 modrm = [
     "byte ptr [bx + si]", # mod 00
     "byte ptr [bx + di]", 
@@ -69,5 +76,14 @@ def generate_mov_1():
         for second in modrm:
             print("mov " + first + ", " + second)
 
+def generate_mov_6():
+    for first in sreg:
+        for second in modrm:
+            print("mov " + first + ", " + second)
 
-generate_mov_1()
+    for first in modrm:
+        for second in sreg:
+            print("mov " + first + ", " + second)
+
+
+generate_mov_6()

@@ -18,6 +18,7 @@
     mod_val db 0
     rm_val db 0
     reg_val db 0
+    sreg_val db 0
 
     input_filename db "test.com", 0, '$'
     input_filehandle dw 0

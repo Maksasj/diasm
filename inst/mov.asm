@@ -13,6 +13,19 @@ process_xx_reg_xxx_scenario:
 
     ret
 
+process_xx_sreg_xxx_scenario:
+    xor ax, ax
+    add al, sreg_val
+
+    mov bh, 3
+    mul bh
+    mov bx, offset SREG_00
+    add bx, ax
+
+    @PRINT_STR(bx)
+
+    ret
+
 mov_scenario_1:
     @PRINT_BYTE('1')
 
@@ -160,14 +173,101 @@ mov_scenario_3:
 
 mov_scenario_4:
     @PRINT_BYTE('4')
+
+    mov w_val, al
+    @MASK_VALUE(w_val, 00000001b)
+
+    @JMP_EQL(w_val, 00000000b, mov_scenario_4_w_0)
+    @JMP_EQL(w_val, 00000001b, mov_scenario_4_w_1)
+
+    mov_scenario_4_w_0:
+        @PRINT_STR(offset W_REG_STR_0000)
+        jmp mov_scenario_4_continue
+    mov_scenario_4_w_1:
+        @PRINT_STR(offset W_REG_STR_1000)
+        jmp mov_scenario_4_continue
+
+    mov_scenario_4_continue:
+
+    @RETRIEVE_NEXT_WORD
+    @PRINT_WORD(ax)
+
     jmp mov_finish
 
 mov_scenario_5:
     @PRINT_BYTE('5')
+
+    mov w_val, al
+    @MASK_VALUE(w_val, 00000001b)
+
+    @RETRIEVE_NEXT_WORD
+    @PRINT_WORD(ax)
+
+    @JMP_EQL(w_val, 00000000b, mov_scenario_5_w_0)
+    @JMP_EQL(w_val, 00000001b, mov_scenario_5_w_1)
+
+    mov_scenario_5_w_0:
+        @PRINT_STR(offset W_REG_STR_0000)
+        jmp mov_scenario_5_continue
+    mov_scenario_5_w_1:
+        @PRINT_STR(offset W_REG_STR_1000)
+        jmp mov_scenario_5_continue
+
+    mov_scenario_5_continue:
+
     jmp mov_finish
 
 mov_scenario_6:
     @PRINT_BYTE('6')
+
+    mov d_val, al
+    @MASK_VALUE(d_val, 00000010b)
+
+    @RETRIEVE_NEXT_BYTE
+
+    mov rm_val, al
+    @MASK_VALUE(rm_val, 00000111b)
+
+    mov sreg_val, al
+    @MASK_VALUE(sreg_val, 00011000b)
+    shr sreg_val, 3
+
+    mov mod_val, al
+    @MASK_VALUE(mod_val, 11000000b)
+    shr mod_val, 3
+
+    @JMP_EQL(d_val, 00000000b, mov_scenario_6_d_0)
+        call process_xx_sreg_xxx_scenario
+    mov_scenario_6_d_0:
+
+    @JMP_EQL(mod_val, 00000000b, mov_scenario_6_mod_00)
+    @JMP_EQL(mod_val, 00001000b, mov_scenario_6_mod_01)
+    @JMP_EQL(mod_val, 00010000b, mov_scenario_6_mod_10)
+    @JMP_EQL(mod_val, 00011000b, mov_scenario_6_mod_11)
+
+    mov_scenario_6_mod_00:
+        call process_mod_xxx_rm_scenario_00
+        jmp mov_scenario_6_continue
+
+    mov_scenario_6_mod_01:
+        call process_mod_xxx_rm_scenario_01
+        jmp mov_scenario_6_continue
+
+    mov_scenario_6_mod_10:
+        call process_mod_xxx_rm_scenario_10
+        jmp mov_scenario_6_continue
+
+    mov_scenario_6_mod_11:
+        mov w_val, 1
+        call process_mod_xxx_rm_scenario_11
+        jmp mov_scenario_6_continue
+
+    mov_scenario_6_continue:
+
+    @JMP_EQL(d_val, 00000010b, mov_scenario_6_d_1)
+        call process_xx_sreg_xxx_scenario
+    mov_scenario_6_d_1:
+
     jmp mov_finish
 
 process_mov:

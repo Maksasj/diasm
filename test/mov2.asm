@@ -39,7 +39,7 @@ start:
     mov byte ptr [bp + 1111h], 11h
     mov byte ptr [bx + 1111h], 11h
 
-    ;; tasm compiles this to scenario 2
+    ;; tasm compiles this to scenario 3
     ;; mov al, 11h
     ;; mov cl, 11h
     ;; mov dl, 11h
@@ -84,7 +84,7 @@ start:
     mov word ptr [bp + 1111h], 1111h
     mov word ptr [bx + 1111h], 1111h
 
-    ;; tasm compiles this to scenario 2
+    ;; tasm compiles this to scenario 3
     ;; mov ax, 1111h
     ;; mov cx, 1111h
     ;; mov dx, 1111h

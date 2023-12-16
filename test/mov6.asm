@@ -260,5 +260,4 @@ start:
     mov di, ss
     mov di, ds
 
-
 end start
