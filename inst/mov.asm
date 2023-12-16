@@ -126,6 +126,36 @@ mov_scenario_2:
 
 mov_scenario_3:
     @PRINT_BYTE('3')
+
+    xor ah, ah
+    @MASK_VALUE(al, 00001111b)
+    mov cl, al
+
+    mov bh, 3
+    mul bh
+    mov bx, offset W_REG_STR_0000
+    add bx, ax
+
+    @PRINT_STR(bx)
+
+    mov w_val, cl
+    @MASK_VALUE(w_val, 00001000b)
+
+    @JMP_EQL(w_val, 00000000b, mov_scenario_3_w_0)
+    @JMP_EQL(w_val, 00001000b, mov_scenario_3_w_1)
+
+    mov_scenario_3_w_0:
+        @RETRIEVE_NEXT_BYTE
+        xor ah, ah
+        @PRINT_WORD(ax)
+        jmp mov_scenario_3_continue
+    mov_scenario_3_w_1:
+        @RETRIEVE_NEXT_WORD
+        @PRINT_WORD(ax)
+        jmp mov_scenario_3_continue
+
+    mov_scenario_3_continue:
+
     jmp mov_finish
 
 mov_scenario_4:
