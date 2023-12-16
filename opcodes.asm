@@ -202,8 +202,8 @@
          @DECL_OPCODE(OP_10001010\, process_mov)         # 10001010 Scenario 1
          @DECL_OPCODE(OP_10001011\, process_mov)         # 10001011 Scenario 1
          @DECL_OPCODE(OP_10001100\, process_mov)         # 10001100 Scenario 6
-         @DECL_OPCODE(OP_10001101\, process_mov)         # 10001101 Scenario 6
-         @DECL_OPCODE(OP_10001110\, process_unsupported) # 10001110
+         @DECL_OPCODE(OP_10001101\, process_unsupported) # 10001110
+         @DECL_OPCODE(OP_10001110\, process_mov)         # 10001101 Scenario 6
          @DECL_OPCODE(OP_10001111\, process_unsupported) # 10001111
          @DECL_OPCODE(OP_10010000\, process_unsupported) # 10010000
          @DECL_OPCODE(OP_10010001\, process_unsupported) # 10010001
@@ -318,7 +318,7 @@
          @DECL_OPCODE(OP_11111110\, process_unsupported) # 11111110
          @DECL_OPCODE(OP_11111111\, process_unsupported) # 11111111
 
-
+    # (MOD_R_M_STR_00000 + 000mmrrr * 24)
     MOD_R_M_STR_00000 db "bx + si$                "
     MOD_R_M_STR_00001 db "bx + di$                "
     MOD_R_M_STR_00010 db "bp + si$                "
@@ -344,6 +344,7 @@
     MOD_R_M_STR_10110 db "bp + $                  "
     MOD_R_M_STR_10111 db "bx + $                  "
 
+    # (W_REG_STR_0000 + 0000wreg * 3)
     W_REG_STR_0000 db "al$"
     W_REG_STR_0001 db "cl$"
     W_REG_STR_0010 db "dl$"

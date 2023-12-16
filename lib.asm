@@ -30,8 +30,19 @@
 )
 
 @MACRO(@JMP_EQL, (@ARG1, @ARG2, @LABEL),
+    ;; jumps if @ARG1 are @ARG2 to @LABEL
     cmp @ARG1\\, @ARG2
     je @LABEL
+)
+
+@MACRO(@JMP_IN_RANGE, (@ARG1,@ARG2,@ARG3,@LABEL),
+    cmp @ARG1\\, @ARG2
+    jl  not_in_range_@LABEL
+    cmp @ARG1\\, @ARG3
+    jg  not_in_range_@LABEL
+    jmp @LABEL
+
+    not_in_range_@LABEL:
 )
 
 tasm_push_all_m MACRO

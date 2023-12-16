@@ -4,6 +4,7 @@
 org 100h
 
 start:
-    xlat
+    ;; mov scenario 1
+    mov al, al
 
 end start

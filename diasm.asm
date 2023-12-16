@@ -125,14 +125,14 @@ start:
     call read_input_file
 
     inst_loop:
-        @RETRIEVE_NEXT_BYTE
+         @RETRIEVE_NEXT_BYTE
 
-        xor bx, bx
-        mov bl, al
-        shl bx, 1
-        add bx, offset OP_00000000
+         xor bx, bx
+         mov bl, al
+         shl bx, 1
+         add bx, offset OP_00000000
 
-        jmp [bx]
+         jmp [bx]
 
     jmp exit
 end start
