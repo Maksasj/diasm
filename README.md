@@ -1,7 +1,7 @@
 # DIASM
 
 ## Instructions
-- [ ] MOV
+- [x] MOV
 - [x] OUT
 - [x] NOT
 - [x] RCR
