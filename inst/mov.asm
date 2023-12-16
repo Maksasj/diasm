@@ -46,21 +46,21 @@ mov_scenario_1:
 
     mov_scenario_1_mod_00:
         call process_mod_xxx_rm_scenario_00
-        jmp mov_scenario_continue
+        jmp mov_scenario_1_continue
 
     mov_scenario_1_mod_01:
         call process_mod_xxx_rm_scenario_01
-        jmp mov_scenario_continue
+        jmp mov_scenario_1_continue
 
     mov_scenario_1_mod_10:
         call process_mod_xxx_rm_scenario_10
-        jmp mov_scenario_continue
+        jmp mov_scenario_1_continue
 
     mov_scenario_1_mod_11:
         call process_mod_xxx_rm_scenario_11
-        jmp mov_scenario_continue
+        jmp mov_scenario_1_continue
 
-    mov_scenario_continue:
+    mov_scenario_1_continue:
 
     @JMP_EQL(d_val, 00000010b, mov_scenario_1_d_1)
         call process_xx_reg_xxx_scenario
@@ -70,6 +70,58 @@ mov_scenario_1:
 
 mov_scenario_2:
     @PRINT_BYTE('2')
+
+    mov w_val, al
+    @MASK_VALUE(w_val, 00000001b)
+
+    @RETRIEVE_NEXT_BYTE
+
+    mov rm_val, al
+    @MASK_VALUE(rm_val, 00000111b)
+
+    mov mod_val, al
+    @MASK_VALUE(mod_val, 11000000b)
+    shr mod_val, 3
+
+    @JMP_EQL(mod_val, 00000000b, mov_scenario_2_mod_00)
+    @JMP_EQL(mod_val, 00001000b, mov_scenario_2_mod_01)
+    @JMP_EQL(mod_val, 00010000b, mov_scenario_2_mod_10)
+    @JMP_EQL(mod_val, 00011000b, mov_scenario_2_mod_11)
+
+    mov_scenario_2_mod_00:
+        call process_mod_xxx_rm_scenario_00
+        jmp mov_scenario_2_continue
+
+    mov_scenario_2_mod_01:
+        call process_mod_xxx_rm_scenario_01
+        jmp mov_scenario_2_continue
+
+    mov_scenario_2_mod_10:
+        call process_mod_xxx_rm_scenario_10
+        jmp mov_scenario_2_continue
+
+    mov_scenario_2_mod_11:
+        call process_mod_xxx_rm_scenario_11
+        jmp mov_scenario_2_continue
+
+    mov_scenario_2_continue:
+
+    @JMP_EQL(w_val, 00000000b, mov_scenario_2_w_0)
+    @JMP_EQL(w_val, 00000001b, mov_scenario_2_w_1)
+
+    mov_scenario_2_w_0:
+        @RETRIEVE_NEXT_BYTE
+        xor ah, ah
+        @PRINT_WORD(ax)
+        jmp mov_scenario_2_finish
+
+    mov_scenario_2_w_1:
+        @RETRIEVE_NEXT_WORD
+        @PRINT_WORD(ax)
+        jmp mov_scenario_2_finish
+
+    mov_scenario_2_finish:
+
     jmp mov_finish
 
 mov_scenario_3:
