@@ -1,0 +1,109 @@
+Turbo Assembler  Version 3.1  Copyright (c) 1988, 1992 Borland International
+
+Assembling file:   test.ASM
+**Error** test.ASM(8) Illegal memory reference
+**Error** test.ASM(9) Illegal memory reference
+**Error** test.ASM(10) Illegal memory reference
+**Error** test.ASM(11) Illegal memory reference
+**Error** test.ASM(12) Illegal memory reference
+**Error** test.ASM(13) Illegal memory reference
+**Error** test.ASM(14) Illegal memory reference
+**Error** test.ASM(15) Illegal memory reference
+**Error** test.ASM(16) Illegal memory reference
+**Error** test.ASM(17) Illegal memory reference
+**Error** test.ASM(18) Need register in expression
+**Error** test.ASM(19) Illegal memory reference
+**Error** test.ASM(20) Illegal memory reference
+**Error** test.ASM(21) Illegal memory reference
+**Error** test.ASM(22) Illegal memory reference
+**Error** test.ASM(23) Illegal memory reference
+**Error** test.ASM(24) Illegal memory reference
+**Error** test.ASM(25) Illegal memory reference
+**Error** test.ASM(26) Illegal memory reference
+**Error** test.ASM(27) Illegal memory reference
+**Error** test.ASM(28) Illegal memory reference
+**Error** test.ASM(29) Illegal memory reference
+**Error** test.ASM(30) Illegal memory reference
+**Error** test.ASM(31) Illegal memory reference
+**Error** test.ASM(32) Illegal memory reference
+**Error** test.ASM(33) Illegal memory reference
+**Error** test.ASM(34) Illegal memory reference
+**Error** test.ASM(35) Illegal memory reference
+**Error** test.ASM(44) Operand types do not match
+**Error** test.ASM(45) Operand types do not match
+**Error** test.ASM(46) Operand types do not match
+**Error** test.ASM(47) Operand types do not match
+**Error** test.ASM(48) Operand types do not match
+**Error** test.ASM(49) Operand types do not match
+**Error** test.ASM(50) Operand types do not match
+**Error** test.ASM(51) Operand types do not match
+**Error** test.ASM(52) Illegal memory reference
+**Error** test.ASM(53) Illegal memory reference
+**Error** test.ASM(54) Illegal memory reference
+**Error** test.ASM(55) Illegal memory reference
+**Error** test.ASM(56) Illegal memory reference
+**Error** test.ASM(57) Illegal memory reference
+**Error** test.ASM(58) Illegal memory reference
+**Error** test.ASM(59) Illegal memory reference
+**Error** test.ASM(60) Illegal memory reference
+**Error** test.ASM(61) Illegal memory reference
+**Error** test.ASM(62) Need register in expression
+**Error** test.ASM(63) Illegal memory reference
+**Error** test.ASM(64) Illegal memory reference
+**Error** test.ASM(65) Illegal memory reference
+**Error** test.ASM(66) Illegal memory reference
+**Error** test.ASM(67) Illegal memory reference
+**Error** test.ASM(68) Illegal memory reference
+**Error** test.ASM(69) Illegal memory reference
+**Error** test.ASM(70) Illegal memory reference
+**Error** test.ASM(71) Illegal memory reference
+**Error** test.ASM(72) Illegal memory reference
+**Error** test.ASM(73) Illegal memory reference
+**Error** test.ASM(74) Illegal memory reference
+**Error** test.ASM(75) Illegal memory reference
+**Error** test.ASM(76) Illegal memory reference
+**Error** test.ASM(77) Illegal memory reference
+**Error** test.ASM(78) Illegal memory reference
+**Error** test.ASM(79) Illegal memory reference
+**Error** test.ASM(88) Operand types do not match
+**Error** test.ASM(89) Operand types do not match
+**Error** test.ASM(90) Operand types do not match
+**Error** test.ASM(91) Operand types do not match
+**Error** test.ASM(92) Operand types do not match
+**Error** test.ASM(93) Operand types do not match
+**Error** test.ASM(94) Operand types do not match
+**Error** test.ASM(95) Operand types do not match
+**Error** test.ASM(96) Illegal memory reference
+**Error** test.ASM(97) Illegal memory reference
+**Error** test.ASM(98) Illegal memory reference
+**Error** test.ASM(99) Illegal memory reference
+**Error** test.ASM(100) Illegal memory reference
+**Error** test.ASM(101) Illegal memory reference
+**Error** test.ASM(102) Illegal memory reference
+**Error** test.ASM(103) Illegal memory reference
+**Error** test.ASM(104) Illegal memory reference
+**Error** test.ASM(105) Illegal memory reference
+**Error** test.ASM(106) Need register in expression
+**Error** test.ASM(107) Illegal memory reference
+**Error** test.ASM(108) Illegal memory reference
+**Error** test.ASM(109) Illegal memory reference
+**Error** test.ASM(110) Illegal memory reference
+**Error** test.ASM(111) Illegal memory reference
+**Error** test.ASM(112) Illegal memory reference
+**Error** test.ASM(113) Illegal memory reference
+**Error** test.ASM(114) Illegal memory reference
+**Error** test.ASM(115) Illegal memory reference
+**Error** test.ASM(116) Illegal memory reference
+**Error** test.ASM(117) Illegal memory reference
+**Error** test.ASM(118) Illegal memory reference
+**Error** test.ASM(119) Illegal memory reference
+**Error** test.ASM(120) Illegal memory reference
+**Error** test.ASM(121) Illegal memory reference
+**Error** test.ASM(122) Illegal memory reference
+**Error** test.ASM(123) Illegal memory reference
+**Error** test.ASM(132) Too many errors or warnings
+Error messages:    101
+Warning messages:  None
+Passes:            1
+Remaining memory:  448k
+

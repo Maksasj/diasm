@@ -65,7 +65,7 @@ modrm = [
 ]
 
 def generate_mov_1():
-    for first in reg:
+    for first in modrm:
         for second in modrm:
             print("mov " + first + ", " + second)
 

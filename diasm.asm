@@ -14,14 +14,16 @@
 
     w_val db 0
     v_val db 0
+    d_val db 0
     mod_val db 0
     rm_val db 0
     reg_val db 0
 
     input_filename db "test.com", 0, '$'
     input_filehandle dw 0
-    input_buffer db 255 dup(0), '$'
+    input_buffer db 255 dup(0), 10100000b
     input_pointer dw 0
+    input_file_read_bytes dw 0
 
     error_msg db "something went wrong", 13, 10, '$'
 
@@ -50,28 +52,43 @@
     mov dx\, offset input_buffer
     int 21h
 
-    cmp al\, 0
+    mov input_file_read_bytes\, ax
+
+    jc handle_error
+
+    cmp input_file_read_bytes\, 0
     je exit
 )
 
 @DECL_PROC(retrieve_next_byte,
     ;; retrieving next byte from input file
-    mov bx\, offset input_buffer
-    add bx\, input_pointer
-    mov al\, [bx]
 
-    inc input_pointer
-
-    cmp input_pointer\, 256
+    ;; first we check if pointer is alredy outside buffer
+    mov bx\, input_file_read_bytes
+    cmp input_pointer\, bx
     jne retrieve_next_byte_continue
 
+    ;; if yes then we read file
     @PUSH_ALL
     call read_input_file
     @POP_ALL
 
+    ;; and set pointer to 0
+    ;; note that file may be ended\, cause of that we will stop there
     mov input_pointer\, 0
 
     retrieve_next_byte_continue:
+
+    ;; If pointer is still inside buffer\, and we have not
+    ;; readed entire file\, we just return out byte
+    xor ax\, ax
+    mov bx\, offset input_buffer
+    add bx\, input_pointer
+    mov al\, [bx]
+
+    ;; and increment pointer\, only during
+    ;; next proc call\, we will chekc if we outside buffer
+    inc input_pointer
 )
 
 @DECL_PROC(retrieve_word_proc,
@@ -115,6 +132,8 @@ exit:
     @EXIT(0)
 
 handle_error:
+    @PRINT_STR(offset error_msg)
+
     @EXIT(1)
 
 start:
