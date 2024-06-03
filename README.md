@@ -48,7 +48,7 @@ process_not:
     jmp inst_loop
 ```
 
-Note that for an **assembly** code is pretty readable, how it is to even add support for new instructions. 
+Note that for an **assembly** code is pretty readable, now it is very easy to even add support for new instructions. 
 
 Main benefit comes from **@JMP_EQL()**, **@MASK_VALUE()** and other macros. **Tasm** itself does not support such macros, these macros are resolved by my own preprocessor [link](https://github.com/AlexShukel/am08x24arc/tree/main/src/preprocessor). 
 
